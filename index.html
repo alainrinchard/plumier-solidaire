@@ -617,7 +617,7 @@
           </div>
           <div class="tab-panel" id="tab-don">
             <div class="steps">
-              <div class="step"><div><strong>Préparez un sac ou une boîte.</strong><p>Regroupez le matériel par catégorie pour faciliter le tri lors de la récolte.</p></div></div>
+              <div class="step"><div><strong>Préparez un sac ou une boîte.</strong><p>Regroupez si possible le matériel par catégorie pour faciliter le tri lors de la récolte.</p></div></div>
               <div class="step"><div><strong>Vérifiez les dates et l’horaire.</strong><p>Les récoltes indiquées ont lieu le samedi 4 juillet et le samedi 1er août, de 9h30 à 12h.</p></div></div>
               <div class="step"><div><strong>Conservez cette page.</strong><p>Vous y retrouvez l’adresse, les numéros de contact et l’affiche officielle à télécharger.</p></div></div>
             </div>
@@ -628,7 +628,6 @@
               <div class="step"><div><strong>Un autre lieu est indiqué à Anhée.</strong><p>Chocamel à Anhée est également mentionné comme lieu de récolte.</p></div></div>
               <div class="step"><div><strong>Contactez l’équipe en cas de doute.</strong><p>Les numéros utiles pour Dinant, Anhée et Yvoir sont repris dans la section « Contacts utiles ».</p></div></div>
             </div>
-            <button class="btn btn-soft" style="margin-top:14px;" type="button" data-copy="Plumier solidaire : collecte de matériel scolaire neuf ou en bon état pour aider des enfants à bien démarrer l’année. Dates de récolte : samedi 4 juillet et samedi 1er août, de 9h30 à 12h. Lieu principal : Maison du PS à Dinant, Rue Albert Huybrechts, 1A0. Merci pour votre solidarité !">Copier les informations essentielles</button>
           </div>
         </article>
       </div>
@@ -719,24 +718,6 @@
         setTimeout(() => URL.revokeObjectURL(url), 60000);
       });
     }
-
-    document.querySelectorAll('[data-copy]').forEach(button => {
-      button.addEventListener('click', async () => {
-        const text = button.getAttribute('data-copy');
-        try {
-          await navigator.clipboard.writeText(text);
-          showToast('Copié dans le presse-papiers');
-        } catch (e) {
-          const area = document.createElement('textarea');
-          area.value = text;
-          document.body.appendChild(area);
-          area.select();
-          document.execCommand('copy');
-          area.remove();
-          showToast('Copié');
-        }
-      });
-    });
 
     document.getElementById('shareBtn').addEventListener('click', async () => {
       const pageUrl = (location.protocol === 'http:' || location.protocol === 'https:') ? location.href : '';
